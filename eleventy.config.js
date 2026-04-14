@@ -3,6 +3,8 @@ import markdownIt from "markdown-it";
 
 const md = markdownIt({ html: true, linkify: true });
 
+const pathPrefix = process.env.PATHPREFIX ?? "/";
+
 export default function (eleventyConfig) {
   eleventyConfig.addFilter("md", (content) => md.render(content ?? ""));
   eleventyConfig.addPassthroughCopy("src/assets/img");
@@ -87,6 +89,7 @@ export default function (eleventyConfig) {
   });
 
   return {
+    pathPrefix,
     dir: {
       input: "src",
       output: "_site",
