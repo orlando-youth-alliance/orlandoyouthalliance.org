@@ -54,6 +54,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build-ghpages
+        env:
+          PATHPREFIX: /${{ github.event.repository.name }}/
 
       - name: Upload static files as artifact
         id: deployment

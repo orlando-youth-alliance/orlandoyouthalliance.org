@@ -9,7 +9,7 @@
     "css:watch": "npx @tailwindcss/cli -i src/assets/styles/index.css -o _site/assets/styles/index.css --watch",
     "build": "npm run css:build && npx eleventy",
     "serve": "concurrently \"npm run css:watch\" \"npx eleventy --serve\"",
-    "build-ghpages": "npm run css:build && PATHPREFIX=/site/ npx @11ty/eleventy"
+    "build-ghpages": "npm run css:build && npx @11ty/eleventy"
   },
   "keywords": [],
   "author": "",
