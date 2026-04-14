@@ -26,7 +26,7 @@ Ways to donate:
 3. Individuals wishing to include OYA in their will or estate plan, should call 407-244-1222 or email us at <info@orlandoyouthalliance.org>.
 
 
-[CLICK HERE to learn how to add OYA to your will or trust](https://orlandoyouthalliance.org/ContentPage?id=33)
+[CLICK HERE to learn how to add OYA to your will or trust](/bequests)
 
 {% img "/assets/img/DonateMainImage.png", "donation main image" %}
 

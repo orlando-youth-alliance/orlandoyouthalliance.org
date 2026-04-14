@@ -14,7 +14,7 @@ Click the link below to access the Orlando Youth Alliance Continuing Education S
 - Description of degree program including courses required. This should be from the University catalogue. Printed excerpts must include bibliographical reference information for the original data source.
 - Current Resume
 
-[Continuing Education Scholarship Application](https://orlandoyouthalliance.org/Content/PDF/OYAScholarshipApplication.pdf)
+[Continuing Education Scholarship Application](/assets/pdf/OYAScholarshipApplication.pdf)
 
 {% img "/assets/img/scholarshipRecipients.png", "scholarship recipients", "center" %}
 
