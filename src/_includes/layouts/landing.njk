@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or "Orlando Youth Alliance" }}</title>
+
+    <!-- additional styling for anything not covered by tailwindcss utility classes -->
+    <link rel="stylesheet" href="/assets/styles/index.css">
+
+    <!-- prevents flashing during dark/light mode switching, please do not remove -->
+    <script src="/assets/js/theme.js"></script>
+
+  </head>
+
+  <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+
+    {% include "partials/header.njk" %}
+
+    <main>
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="/assets/img/CoverImageOya.jpg" alt="" role="presentation" class="w-full h-full object-cover">
+          <!-- [OYA-HERO] brand gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#1e3a5f]/60 to-[#38c4c1]/40"></div>
+        </div>
+        <div class="relative px-4 py-20 sm:py-32 flex justify-center">
+          <div class="bg-white/40 rounded-2xl p-6 sm:p-8 text-center w-3/4 max-w-2xl">
+            <!-- [OYA-HERO] partner logos use .hero-partner-logos img for equal flex sizing -->
+            <div class="hero-partner-logos flex flex-nowrap justify-center items-center gap-4 pt-6 pb-2">
+              <img src="/assets/img/SYA-horizontal.png" alt="Seminole Youth Alliance">
+              <img src="/assets/img/LYA-horizontal.png" alt="Lakeland Youth Alliance">
+              <img src="/assets/img/OsceolaYA-logo.gif" alt="Osceola Youth Alliance">
+            </div>
+            <!-- [OYA-HERO] tagline strip bleeds past card padding -->
+            <div class="bg-yellow-300 py-8 mt-3 text-4xl text-black">{{ tagline | safe }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links -->
+      <div class="grid grid-cols-2 md:grid-cols-4">
+        {% for link in quickLinks %}
+        <a href="{{ link.url }}"
+          style="background-color: {{ link.bg }}; color: {{ link.textColor }};"
+          class="flex items-center justify-center py-12 px-6 text-center text-2xl font-bold no-underline hover:brightness-110 transition-all">
+          {{ link.label }}
+        </a>
+        {% endfor %}
+      </div>
+
+      {{ content | safe }}
+    </main>
+
+    {% include "partials/footer.njk" %}
+
+  </body>
+</html>
