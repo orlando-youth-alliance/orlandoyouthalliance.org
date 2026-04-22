@@ -18,4 +18,4 @@ Orlando Youth Alliance offers grants to support local Gay-Straight Alliance / Ge
 
 ## Apply
 
-[Download the GSA Grant Application (PDF)](/assets/GSAGrantsApplication.pdf)
+[Download the GSA Grant Application (PDF)](/assets/pdf/GSAGrantsApplication.pdf)
