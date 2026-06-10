@@ -18,8 +18,6 @@
     {% include "partials/header.njk" %}
 
     <main class="flex-1 w-full px-4 my-10">
-      <h1 class="font-medium">{{ title | safe }}</h1>
-
       {% if donationLink %}
         {% include "partials/donateButton.njk" %}
       {% endif %}

@@ -1,6 +1,7 @@
 ---
 permalink: /celebrity-server/
 layout: layouts/contentWide.njk
+title: Celebrity Server
 ---
 
 <div style="overflow-x: auto;">
