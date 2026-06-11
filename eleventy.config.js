@@ -92,7 +92,7 @@ export default function (eleventyConfig) {
     pathPrefix,
     dir: {
       input: "src",
-      output: "_site",
+      output: process.env.OUTPUT ?? "_site",
       data: "_data",
       includes: "_includes",
     },
