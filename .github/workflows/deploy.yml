@@ -57,6 +57,10 @@ jobs:
         env:
           PATHPREFIX: /${{ github.event.repository.name }}/
 
+      - run: npm run build:seminole
+      - run: npm run build:lakeland
+      - run: npm run build:osceola
+
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # 4.0.0
