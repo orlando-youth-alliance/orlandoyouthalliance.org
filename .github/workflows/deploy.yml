@@ -53,9 +53,20 @@ jobs:
           key: ${{ runner.os }}-eleventy-fetch-cache
 
       - run: npm ci
+
+      - name: Determine root path prefix
+        # If src/CNAME is present, the site is served from the domain root ("/").
+        # Otherwise it's served from https://<user>.github.io/<repo>/.
+        run: |
+          if [ -f src/CNAME ]; then
+            echo "ROOTPREFIX=" >> "$GITHUB_ENV"
+          else
+            echo "ROOTPREFIX=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
+          fi
+
       - run: npm run build-ghpages
         env:
-          PATHPREFIX: /${{ github.event.repository.name }}/
+          PATHPREFIX: ${{ env.ROOTPREFIX }}/
 
       - run: npm run build:seminole
       - run: npm run build:lakeland

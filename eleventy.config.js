@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import markdownIt from "markdown-it";
 
@@ -10,6 +11,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/pdf");
+
+  // Custom domain for GitHub Pages, e.g. "orlandoyouthalliance.org"
+  if (existsSync("src/CNAME")) {
+    eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+  }
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
