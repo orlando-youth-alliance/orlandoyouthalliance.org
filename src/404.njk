@@ -1,0 +1,68 @@
+---
+permalink: /404.html
+eleventyExcludeFromCollections: true
+title: Page Not Found
+---
+<!DOCTYPE html>
+<html lang="en" style="visibility:hidden">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page Not Found | {{ chapter.name }}</title>
+    <link rel="stylesheet" href="/assets/styles/index.css">
+
+    <script>
+      // Legacy URL redirects — run before page renders to avoid a flash
+      (function () {
+        var path = window.location.pathname;
+        var params = new URLSearchParams(window.location.search);
+
+        // ContentPage.aspx?id=N → new page
+        if (/contentpage\.aspx/i.test(path)) {
+          var map = {
+            '1':  '/mission/',
+            '2':  '/youth/',
+            '3':  '/parents/',
+            '4':  '/volunteer/',
+            '8':  '/donate/',
+            '9':  '/contact/',
+            '19': '/grants/',
+            '27': '/calendar/',
+            '31': '/about/',
+            '32': '/partners/',
+            '34': '/'
+          };
+          var dest = map[params.get('id')];
+          if (dest) { window.location.replace(dest); return; }
+          // Unknown id → homepage
+          window.location.replace('/'); return;
+        }
+
+        // Calendar.aspx → /calendar/
+        if (/calendar\.aspx/i.test(path)) {
+          window.location.replace('/calendar/'); return;
+        }
+
+        // Not a known legacy URL — show the 404 page
+        document.documentElement.style.visibility = 'visible';
+      })();
+    </script>
+
+    <!-- prevents flashing during dark/light mode switching -->
+    <script src="/assets/js/theme.js"></script>
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans">
+
+    {% include "partials/header.njk" %}
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 my-10 text-center prose dark:prose-invert">
+      <h1 class="font-medium">Page Not Found</h1>
+      <p>Sorry, the page you're looking for doesn't exist or may have moved.</p>
+      <p><a href="/">Return to the homepage &rarr;</a></p>
+    </main>
+
+    {% include "partials/footer.njk" %}
+
+  </body>
+</html>
