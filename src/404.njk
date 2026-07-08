@@ -43,6 +43,15 @@ title: Page Not Found
           window.location.replace('/calendar/'); return;
         }
 
+        // Legacy capitalized paths (e.g. /Mission/) → lowercase equivalent
+        var lower = path.toLowerCase();
+        if (lower !== path) {
+          var known = ['/about/', '/board/', '/contact/', '/counselors/', '/grants/', '/join/', '/mission/', '/newsletters/', '/partners/', '/resources/', '/scholarships/'];
+          if (known.indexOf(lower) !== -1) {
+            window.location.replace(lower); return;
+          }
+        }
+
         // Not a known legacy URL — show the 404 page
         document.documentElement.style.visibility = 'visible';
       })();
