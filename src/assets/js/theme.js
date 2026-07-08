@@ -77,29 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- Event popup ---
-
-  var eventPopup = document.getElementById("event-popup");
-  var eventPopupExpired = new Date() >= new Date(2026, 8, 29); // Sept 29, 2026 local time
-  if (eventPopup) {
-    if (eventPopupExpired || sessionStorage.getItem("eventPopupDismissed") === "true") {
-      eventPopup.classList.add("hidden");
-    } else {
-      document.getElementById("event-popup-close").addEventListener("click", dismissEventPopup);
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") dismissEventPopup();
-      });
-      eventPopup.addEventListener("click", function (e) {
-        if (e.target === eventPopup) dismissEventPopup();
-      });
-    }
-  }
-
-  function dismissEventPopup() {
-    eventPopup.classList.add("hidden");
-    sessionStorage.setItem("eventPopupDismissed", "true");
-  }
-
   // --- Disable drag on linked images ---
 
   document.querySelectorAll("a img").forEach(function (img) {
