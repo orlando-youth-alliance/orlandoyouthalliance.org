@@ -77,6 +77,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // --- Event popup ---
+
+  var eventPopup = document.getElementById("event-popup");
+  if (eventPopup) {
+    if (sessionStorage.getItem("eventPopupDismissed") === "true") {
+      eventPopup.classList.add("hidden");
+    } else {
+      document.getElementById("event-popup-close").addEventListener("click", dismissEventPopup);
+      eventPopup.addEventListener("click", function (e) {
+        if (e.target === eventPopup) dismissEventPopup();
+      });
+    }
+  }
+
+  function dismissEventPopup() {
+    eventPopup.classList.add("hidden");
+    sessionStorage.setItem("eventPopupDismissed", "true");
+  }
+
   // --- Disable drag on linked images ---
 
   document.querySelectorAll("a img").forEach(function (img) {
