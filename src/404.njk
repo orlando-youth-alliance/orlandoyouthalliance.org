@@ -14,41 +14,57 @@ title: Page Not Found
     <script>
       // Legacy URL redirects — run before page renders to avoid a flash
       (function () {
-        var path = window.location.pathname;
+        // GitHub Pages (and the local dev server) only ever serve one
+        // 404.html for the whole site, at the root — never a chapter
+        // sub-path's own copy. So this single script has to work out which
+        // chapter it's running under from the URL itself, not from a prefix
+        // baked in at build time.
         var params = new URLSearchParams(window.location.search);
+        var path = window.location.pathname;
+        var prefix = '/';
+        var chapterMatch = path.match(/^\/(seminole|lakeland|osceola)\//i);
+        if (chapterMatch) {
+          prefix = '/' + chapterMatch[1].toLowerCase() + '/';
+          path = '/' + path.slice(prefix.length);
+        }
 
-        // ContentPage.aspx?id=N → new page
-        if (/contentpage\.aspx/i.test(path)) {
+        // Legacy CMS used /ContentPage and /ContentPage.aspx interchangeably
+        if (/^\/contentpage(\.aspx)?\/?$/i.test(path)) {
           var map = {
-            '1':  '/mission/',
-            '2':  '/youth/',
-            '3':  '/parents/',
-            '4':  '/volunteer/',
-            '8':  '/donate/',
-            '9':  '/contact/',
-            '19': '/grants/',
-            '27': '/calendar/',
-            '31': '/about/',
-            '32': '/partners/',
-            '34': '/'
+            '1':  'mission/',
+            '2':  'youth/',
+            '3':  'parents/',
+            '4':  'volunteer/',
+            '8':  'donate/',
+            '9':  'contact/',
+            '19': 'grants/',
+            '27': 'calendar/',
+            '31': 'about/',
+            '32': 'partners/',
+            '34': ''
           };
           var dest = map[params.get('id')];
-          if (dest) { window.location.replace(dest); return; }
-          // Unknown id → homepage
-          window.location.replace('/'); return;
+          window.location.replace(prefix + (dest !== undefined ? dest : '')); return;
         }
 
-        // Calendar.aspx → /calendar/
+        // Calendar.aspx → calendar/
         if (/calendar\.aspx/i.test(path)) {
-          window.location.replace('/calendar/'); return;
+          window.location.replace(prefix + 'calendar/'); return;
         }
 
-        // Legacy capitalized paths (e.g. /Mission/) → lowercase equivalent
+        // Legacy CMS also indexed a /Locations page — no equivalent, send home
+        if (/^\/locations\/?$/i.test(path)) {
+          window.location.replace(prefix); return;
+        }
+
+        // Legacy capitalized paths (e.g. /Mission/) → lowercase equivalent,
+        // within this build's prefix
         var lower = path.toLowerCase();
         if (lower !== path) {
-          var known = ['/about/', '/board/', '/contact/', '/counselors/', '/grants/', '/join/', '/mission/', '/newsletters/', '/partners/', '/resources/', '/scholarships/'];
-          if (known.indexOf(lower) !== -1) {
-            window.location.replace(lower); return;
+          var known = ['about', 'bequests', 'board', 'calendar', 'celebrity-server', 'contact', 'counselors', 'donate', 'grants', 'join', 'mission', 'newsletters', 'parents', 'partners', 'resources', 'scholarships', 'volunteer', 'youth'];
+          var slug = lower.replace(/^\/|\/$/g, '');
+          if (known.indexOf(slug) !== -1) {
+            window.location.replace(prefix + slug + '/'); return;
           }
         }
 
