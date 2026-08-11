@@ -12,20 +12,20 @@ Title | Officer
 --- | ---
 President	| Chris Nault
 Vice President	| River Cloum
-Interim Director	| Sunny Moriello Flatts
+Treasurer | Marie Claggett
+Secretary | Brandon Kiley
 Trustee	| Michael Slaymaker
+Executive Director	| Sunny Moriello Flatts
 
 ## At-Large Board Members
-- Harriette Georgiou
+- Hector Alfaro
 - Anthony Garnet
-- Brandon Kiley
-- Meghann Sellers
+- Harriette Georgiou
 - Scott Guira
 - Patrick Howell
-- Marie Claggett
-- Hector Alfaro
+- Meghann Sellers
  
 
 ## Youth Engagement Coordinators
-- Mike Musco-Jones
 - Itiba Contreras
+- Mike Musco-Jones
