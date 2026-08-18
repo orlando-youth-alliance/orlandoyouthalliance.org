@@ -2,29 +2,25 @@
 permalink: /donate/
 layout: layouts/contentHeavy.njk
 title: Donate
-donationLink: https://www.paypal.com/donate/?hosted_button_id=U584UVALMWSSQ
 ---
-
-{% img "/assets/img/donateInfo.jpeg", "donation info", "right" %}
 
 ## Every dollar helps!
 
 Thank you for considering a donation to the Orlando Youth Alliance. Your tax-deductible gift will help us continue to provide a safe space for LGBTQ youth in Central Florida.
 
-Ways to donate:
-1. Make an online gift. Just click on the "Donate Now" button above to make a donation via PayPal.
+{% include "partials/zeffyDonateButton.njk" %}
 
-2. Send a gift through the mail to:
+Clicking "Donate Now" opens our secure giving form right here on the page &mdash; no need to leave this site. You'll be offered an optional tip to Zeffy at checkout; **tipping is completely optional**, and 100% of the actual donation amount comes directly to Orlando Youth Alliance either way.
 
-    <p>
-      Orlando Youth Alliance<br>
-      255 S Orange Ave.<br>
-      Suite 104 #1985<br>
-      Orlando, Florida 32801<br>
-    </p>
+{% include "partials/donateSidebar.njk" %}
 
-3. Individuals wishing to include OYA in their will or estate plan, should call 407-244-1222 or email us at <info@orlandoyouthalliance.org>.
+Other ways to donate:
 
+1. **PayPal.** Use the "Donate via PayPal" button on this page.
+
+2. **By mail.** Send a check to the address shown on this page.
+
+3. **Planned giving.** Individuals wishing to include OYA in their will or estate plan, should call 407-244-1222 or email us at <info@orlandoyouthalliance.org>.
 
 [CLICK HERE to learn how to add OYA to your will or trust](/bequests)
 
